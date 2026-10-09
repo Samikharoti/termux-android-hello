@@ -21,7 +21,12 @@ jobs:
       - name: Install Android build tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y aapt apksigner d8 zip
+          echo "y" | sudo apt-get install -y \
+            aapt \
+            apksigner \
+            google-android-build-tools-34.0.0-installer \
+            zip
+          echo "/usr/lib/android-sdk/build-tools/34.0.0" >> $GITHUB_PATH
 
       - name: Run setup script
         run: bash setup.sh
